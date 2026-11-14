@@ -642,9 +642,9 @@
           const n = Math.round(+el.dataset.price * (on ? 1.24 : 1)); const txt = n.toLocaleString('de-DE');
           const cur = $('.roll_v', el);
           if (RM) { cur.textContent = txt; return; }
-          const nx = document.createElement('span'); nx.className = 'roll_v'; nx.textContent = txt; nx.style.position = 'absolute'; el.style.position = 'relative'; el.appendChild(nx);
+          const nx = document.createElement('span'); nx.className = 'roll_v'; nx.textContent = txt; nx.style.cssText = 'position:absolute;top:0;right:0;white-space:nowrap'; el.style.position = 'relative'; el.appendChild(nx);
           gsap.fromTo(nx, { yPercent: on ? 100 : -100 }, { yPercent: 0, duration: 0.45, ease: 'power3.out', delay: i * 0.03 });
-          gsap.to(cur, { yPercent: on ? -100 : 100, duration: 0.45, ease: 'power3.out', delay: i * 0.03, onComplete: () => { cur.remove(); nx.style.position = ''; } });
+          gsap.to(cur, { yPercent: on ? -100 : 100, duration: 0.45, ease: 'power3.out', delay: i * 0.03, onComplete: () => { cur.remove(); nx.style.cssText = ''; } });
         });
       }));
     });
